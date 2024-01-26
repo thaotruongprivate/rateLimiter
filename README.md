@@ -16,3 +16,10 @@ npm install
 npm run start:dev
 ```
 4. The app will be running on port 3000
+
+### Testing
+1. Run the tests
+```bash
+npm run test:e2e
+```
+This will use the same redis instance as the app. 

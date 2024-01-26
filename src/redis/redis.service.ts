@@ -7,7 +7,6 @@ import {
   RedisModules,
   RedisScripts,
 } from 'redis';
-import * as process from 'process';
 
 type ClientType = RedisClientType<
   RedisDefaultModules & RedisModules,
@@ -20,13 +19,16 @@ export class RedisService {
 
   async onModuleInit() {
     console.log('Connecting to Redis...');
-    this.client = await createClient({
-      url: process.env.REDIS_URL,
-    })
+    this.client = await createClient()
       .on('error', (err) => {
         console.log('Redis error: ', err);
       })
       .connect();
+    if (this.client.isOpen) {
+      console.log('Redis connected');
+    } else {
+      console.log('Redis not connected');
+    }
   }
 
   public async get(key: string): Promise<string | null> {
