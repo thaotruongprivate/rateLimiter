@@ -5,7 +5,7 @@ Each user is identified by their IP address.
 ### Installation
 1. Create a redis instance in docker
 ```bash
-docker run --name redis_rl -p 6380:6379 -d redis
+docker-compose up redis -d
 ```
 2. Install the requirements
 ```bash
@@ -19,7 +19,7 @@ npm run start:dev
 
 ### Testing
 1. Run the tests
-```bash
+```basht
 npm run test:e2e
 ```
 This will use the same redis instance as the app. 
